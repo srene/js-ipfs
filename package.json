@@ -80,6 +80,7 @@
   "dependencies": {
     "@nodeutils/defaults-deep": "^1.1.0",
     "async": "^2.6.1",
+    "async-iterator-to-pull-stream": "^1.1.0",
     "bignumber.js": "^8.0.2",
     "binary-querystring": "~0.1.2",
     "bl": "^3.0.0",
@@ -114,7 +115,7 @@
     "ipfs-unixfs": "~0.1.16",
     "ipfs-unixfs-exporter": "~0.36.1",
     "ipfs-unixfs-importer": "~0.38.5",
-    "ipld": "~0.21.1",
+    "ipld": "~0.22.0",
     "ipld-bitcoin": "~0.1.8",
     "ipld-dag-pb": "~0.15.3",
     "ipld-ethereum": "^2.0.1",
