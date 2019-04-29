@@ -26,7 +26,7 @@ class Node extends libp2p {
         blackListAttempts: 5, // back off 5 times
         maxParallelDials: 150,
         maxColdCalls: 50,
-        dialTimeout: 10e3 // Be strict with dial time
+        dialTimeout: 5e3 // Be strict with dial time
       },
       modules: {
         transport: [
@@ -64,7 +64,10 @@ class Node extends libp2p {
           kBucketSize: 20,
           enabled: false,
           randomWalk: {
-            enabled: false
+            enabled: false,
+            interval: 600e3,
+            delay: 5e3,
+            timeout: 10e3
           }
         },
         EXPERIMENTAL: {

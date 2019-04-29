@@ -62,7 +62,13 @@ class Node extends libp2p {
           }
         },
         dht: {
-          enabled: false
+          enabled: false,
+          randomWalk: {
+            enabled: false,
+            interval: 300e3,
+            delay: 10e3,
+            timeout: 30e3
+          }
         },
         EXPERIMENTAL: {
           pubsub: false
