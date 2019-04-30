@@ -43,7 +43,7 @@ class IPFS extends EventEmitter {
         ]
       }
     }
-
+    console.log("New ipfs")
     options = config.validate(options || {})
 
     this._options = mergeOptions(defaults, options)

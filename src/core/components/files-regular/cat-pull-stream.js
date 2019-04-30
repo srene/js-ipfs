@@ -22,7 +22,7 @@ module.exports = function (self) {
     }
 
     const d = deferred.source()
-
+    //:console.log("pull "+exporter(ipfsPath, self._ipld, options))
     pull(
       exporter(ipfsPath, self._ipld, options),
       pull.filter(file => file.path === fileNameOrHash),
@@ -37,7 +37,10 @@ module.exports = function (self) {
         }
 
         const file = files[0]
-
+	/*files.forEach(function(element) {
+  		console.log("Files:"+element.path);
+	});
+	console.log("File "+file.path)*/
         if (!file.content && file.type === 'dir') {
           return d.abort(new Error('this dag node is a directory'))
         }
