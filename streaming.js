@@ -26,7 +26,7 @@ var lastTime=0,tickTime=1000,maxOnFly=5;
 var loadsuccess = function (response, stats, context, networkDetails) {
 	//console.log("Load success "+playTime+" "+bufferingTime+" "+loadedMaxTime+" "+received);
 	//console.log(stats.tfirst+" "+stats.tstart+" "+performanceNow())
-	console.log(response.url+" chunks: "+stats.chunk+" hashTime: "+stats.hashtime+" resolTime: "+stats.resoltime+" dTime: "+stats.dtime+" Totaltime: "+stats.totaltime+" totaltput: "+parseFloat(response.data.byteLength*8/(stats.totaltime)).toFixed(2)+" Kbps dloadtput: "+parseFloat(response.data.byteLength*8/(stats.dtime)).toFixed(2)+" Kbps");
+	console.log(response.url+" chunks: "+stats.chunk+" bytes: "+response.data.byteLength+" hashTime: "+stats.hashtime+" resolTime: "+stats.resoltime+" dTime: "+stats.dtime+" Totaltime: "+stats.totaltime+" totaltput: "+parseFloat(response.data.byteLength*8/(stats.totaltime)).toFixed(2)+" Kbps dloadtput: "+parseFloat(response.data.byteLength*8/(stats.dtime)).toFixed(2)+" Kbps");
 	//stream.write(response.data);
 
 	loadedMaxTime+=durations[received]*1000;
