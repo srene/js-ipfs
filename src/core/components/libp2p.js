@@ -25,7 +25,7 @@ module.exports = function libp2p (self, config) {
 
   libp2p.on('start', () => {
     peerInfo.multiaddrs.forEach((ma) => {
-      self._print('Swarm listening on', ma.toString())
+      //self._print('Swarm listening on', ma.toString())
     })
   })
 

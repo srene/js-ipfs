@@ -3,7 +3,7 @@
 var m3u8 = require('m3u8');
 var fs   = require('fs');
 const Ipfs = require('./src')
-const date = require('log-timestamp');
+//const date = require('log-timestamp');
 const HlsjsIpfsLoader = require('./ipfsloader')
 const testhash = process.argv[2]
 const repoPath = 'ipfsRepo'
@@ -24,10 +24,11 @@ var loaderContext, loaderConfig, loaderCallbacks;
 var lastTime=0,tickTime=1000,maxOnFly=5;
 
 var loadsuccess = function (response, stats, context, networkDetails) {
-	console.log("Load success "+playTime+" "+bufferingTime+" "+loadedMaxTime+" "+received);
-	console.log('stats : '+stats.tfirst+":"+stats.tload+" "+ parseFloat(response.data.byteLength*8/(performanceNow()-time)).toFixed(2)+" Kbps");
+	//console.log("Load success "+playTime+" "+bufferingTime+" "+loadedMaxTime+" "+received);
+	//console.log(stats.tfirst+" "+stats.tstart+" "+performanceNow())
+	console.log(response.url+" chunks: "+stats.chunk+" hashTime: "+stats.hashtime+" resolTime: "+stats.resoltime+" dTime: "+stats.dtime+" Totaltime: "+stats.totaltime+" totaltput: "+parseFloat(response.data.byteLength*8/(stats.totaltime)).toFixed(2)+" Kbps dloadtput: "+parseFloat(response.data.byteLength*8/(stats.dtime)).toFixed(2)+" Kbps");
 	//stream.write(response.data);
-	
+
 	loadedMaxTime+=durations[received]*1000;
 	if(startTime==0&&loadedMaxTime>=bufferSize)startTime=performanceNow();
 
@@ -43,7 +44,7 @@ var loadsuccess = function (response, stats, context, networkDetails) {
 	  		time = performanceNow();
 			loader.load(loaderContext,loaderConfig,loaderCallbacks);
 		} else {
-			stopped = true;	
+			stopped = true;
 		}
 	} else {*/
 	if(received>=frags.length){
@@ -123,11 +124,11 @@ node.on('ready', () => {
  		if (err) throw err;
   		callback(playlist)
 	  });
-         
+
         }
       });
     });
-  
+
 })
 }
 
@@ -153,11 +154,11 @@ function doTick(){
     else bufferingTime+=tickTime;
     //console.log("Play time "+playTime+ " "+loadedMaxTime)
 		if(requested<frags.length) {
-			console.log("Play time "+playTime + " " + loadedMaxTime+" "+requested+" "+received+" "+maxOnFly)
+			//console.log("Play time "+playTime + " " + loadedMaxTime+" "+requested+" "+received+" "+maxOnFly)
 			if((playTime>0&&loadedMaxTime-playTime<bufferSize&&requested-received==0)||(playTime==0&&(requested-received)<maxOnFly)) {
-				console.log("Load "+frags[requested])
+				//console.log("Load "+frags[requested])
 				loaderContext = { url: frags[requested], frag: null, responseType: 'arraybuffer', progressData: false };
-		  		time = performanceNow();
+		  	//time = performanceNow();
 				requested++
 				loader.load(loaderContext,loaderConfig,loaderCallbacks);
 			}
@@ -198,5 +199,3 @@ getPlaylist("master.m3u8", function(name) {
   });
 
 });
-
-

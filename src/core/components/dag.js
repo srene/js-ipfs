@@ -43,7 +43,7 @@ module.exports = function dag (self) {
     }),
 
     get: promisify((cid, path, options, callback) => {
-      console.log("DAG get "+cid)
+      //console.log("DAG get "+cid)
       if (typeof path === 'function') {
         callback = path
         path = undefined
@@ -144,7 +144,7 @@ module.exports = function dag (self) {
     // TODO - use IPLD selectors once they are implemented
     _getRecursive: promisify((multihash, options, callback) => {
       // gets flat array of all DAGNodes in tree given by multihash
-      console.log("DAG getrecursive")
+      //console.log("DAG getrecursive")
       if (typeof options === 'function') {
         callback = options
         options = {}

@@ -39,8 +39,8 @@ module.exports = function (self) {
         const file = files[0]
 	/*files.forEach(function(element) {
   		console.log("Files:"+element.path);
-	});
-	console.log("File "+file.path)*/
+	});*/
+	      //console.log("File "+file.path)
         if (!file.content && file.type === 'dir') {
           return d.abort(new Error('this dag node is a directory'))
         }
@@ -48,6 +48,7 @@ module.exports = function (self) {
         if (!file.content) {
           return d.abort(new Error('this dag node has no content'))
         }
+        //console.log("Filepast "+file.type)
 
         d.resolve(file.content)
       })

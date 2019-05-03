@@ -13,7 +13,7 @@ module.exports = function preload (url, callback) {
   log(url)
 
   try {
-    console.log("Preload "+url)
+    //console.log("Preload "+url)
     url = new URL(url)
   } catch (err) {
     return setImmediate(() => callback(err))
@@ -46,7 +46,7 @@ module.exports = function preload (url, callback) {
     })
 
     res.on('end', () => {
-      console.log("Preload end")
+      //console.log("Preload end")
       // If aborted, callback is called in the abort handler
       if (!res.aborted) callback()
     })

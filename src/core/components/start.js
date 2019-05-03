@@ -65,6 +65,12 @@ module.exports = (self) => {
         self._preload.start()
         self._ipns.republisher.start()
         self._mfsPreload.start(cb)
+
+        const stats = self._bitswap.stat()
+        stats.on('resolution', (cid) => {
+          //console.log("last cid received "+ cid)
+          self.emit('resolve',cid)
+        })
       }
     ], done)
   })
