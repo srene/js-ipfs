@@ -1,6 +1,6 @@
 'use strict'
 
-const HashTable = require('hashtable');
+//const HashTable = require('hashtable');
 const {performance} = require('perf_hooks');
 class HlsjsIPFSLoader {
   constructor(config) {
