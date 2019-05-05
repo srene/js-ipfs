@@ -1,7 +1,7 @@
 'use strict'
 
 const series = require('async/series')
-const Bitswap = require('ipfs-bitswap')
+const Bitswap = require('../../ipfs-bitswap')
 const setImmediate = require('async/setImmediate')
 const promisify = require('promisify-es6')
 
