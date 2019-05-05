@@ -2,6 +2,7 @@ FROM node:8
 
 WORKDIR /usr/src/app
 COPY *.js /usr/src/app/
+COPY src /usr/src/app/
 
 ENV IPFS_WRTC_LINUX_WINDOWS=1
 ENV IPFS_MONITORING=1
@@ -20,7 +21,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && npm install --production \
   && npm install wrtc@0.0.67 --production \
-  && npm install ipfs fs m3u8 log-timestamp \
+  && npm install fs m3u8 log-timestamp \
   && npm cache clear --force \
   && apt-get purge --yes $BUILD_DEPS \
   && rm -rf /usr/share/doc /usr/share/locale \
