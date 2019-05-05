@@ -54,6 +54,7 @@ var loadsuccess = function (response, stats, context, networkDetails) {
 		      return console.error('Node failed to stop cleanly!', error)
 		    }
 		    console.log('Node stopped!')
+            console.log("Bufferingtime: "+bufferingTime)
 		    process.exit();
 		})
 	}
