@@ -2,7 +2,8 @@ FROM node:8
 
 WORKDIR /usr/src/app
 COPY *.js /usr/src/app/
-COPY src /usr/src/app/
+ADD src /usr/src/app/src
+ADD package.json /usr/src/app/
 
 ENV IPFS_WRTC_LINUX_WINDOWS=1
 ENV IPFS_MONITORING=1
