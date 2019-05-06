@@ -9,6 +9,12 @@ class HlsjsIPFSLoader {
     this.ipfs.setMaxListeners(0)
     this.totalStats =  [];
     this.currentHash = null
+    this.ipfs.on('receive',(peer,size) => {
+      console.log("Message received "+peer+" "+size)
+    });
+    this.ipfs.on('duplicate',(peer,size) => {
+      console.log("Message received duplicated "+peer+" "+size)
+    });
     this.ipfs.on('resolve',(cid) => {
       if(cid!=this.hash){
       var cid2 = this.currentHash
