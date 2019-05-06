@@ -71,6 +71,13 @@ module.exports = (self) => {
           //console.log("last cid received "+ cid)
           self.emit('resolve',cid)
         })
+        stats.on('received', (peer,size) => {
+          //console.log("last cid received "+ cid)
+          self.emit('receive',peer,size)
+        })
+        stats.on('duplicated', (peer,size) => {
+          self.emit('duplicate',peer,size)
+        });
       }
     ], done)
   })
