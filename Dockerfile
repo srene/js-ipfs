@@ -10,7 +10,7 @@ ENV IPFS_MONITORING=1
 ENV IPFS_PATH=/root/.jsipfs
 ENV IPFS_API_HOST=0.0.0.0
 
-ENV BUILD_DEPS='libnspr4 libnspr4-dev libnss3'
+ENV BUILD_DEPS='libnspr4 libnspr4-dev libnss3 net-tools iputils-ping iproute2'
 
 EXPOSE 4002
 EXPOSE 4003
@@ -24,7 +24,7 @@ RUN apt-get update \
   && npm install wrtc@0.0.67 --production \
   && npm install fs m3u8 log-timestamp \
   && npm cache clear --force \
-  && apt-get purge --yes $BUILD_DEPS \
+#  && apt-get purge --yes $BUILD_DEPS \
   && rm -rf /usr/share/doc /usr/share/locale \
   && rm -rf /usr/local/share/.cache \
   && rm -rf node_modules/go-ipfs-dep/go-ipfs/ipfs 

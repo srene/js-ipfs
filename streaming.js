@@ -9,7 +9,13 @@ const testhash = process.argv[2]
 const repoPath = 'ipfsRepo'
 var node;
 if(process.argv.length>3)
-	node = new Ipfs({ repo: repoPath,  config: { Bootstrap: [process.argv[3]] }})
+	node = new Ipfs({ repo: repoPath,  config: { Bootstrap: [process.argv[3]] },libp2p: {
+        config: {
+          dht: {
+            enabled: true
+          }
+        }
+      }})
 else
 	node = new Ipfs({ repo: repoPath})
 
